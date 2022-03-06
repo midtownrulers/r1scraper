@@ -21,6 +21,7 @@ interface School {
 
 // This can be extended however makes sense. Possibly IDs or a Sport class. It just must include every sport.
 // Possible schema change to School -> Sport -> Team - I wasn't sure how to structure the data based on RankOne
+// It might also make sense to make this a string if it gets crawled.
 declare type Sport = ("Basketball"|"Soccer"|"Etc")
 
 
