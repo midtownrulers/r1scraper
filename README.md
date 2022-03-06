@@ -1,6 +1,6 @@
 # Rank One Sport web scraper bounty
 
-We, Midtown Rulers, are offering a $300 bounty + $75 donation to open source libraries to the first person to create a web scraper in Node.js + TypeScript for Rank One Sport as defined in the Bounty Objective. Rank One Sport is the sole broker for sports information for K-12 schools in Texas; Midtown Rulers is looking to leverage this reservoir to create unique digital experiences.
+We, Midtown Rulers, are offering a $300 bounty + $75 donation to open source libraries to the first person who creates a web scraper in Node.js + TypeScript for Rank One Sport as defined in the Bounty Objective. Rank One Sport is the sole broker for sports information for K-12 schools in Texas; Midtown Rulers is looking to leverage this reservoir to create unique digital experiences.
 
 ## Bounty Objective
 
