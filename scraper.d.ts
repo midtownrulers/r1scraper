@@ -115,7 +115,7 @@ interface GameFilter {
     // if games don't belong to a team then change this to be home/away team score.
     ourScore?: number
     opponentScore?: number
-    won: boolean
+    won?: boolean
 }
 
 declare type GetGames = (districtId: District["id"], schoolId: School["id"], teamId: Team["id"], filter?: GameFilter) => [Game]
