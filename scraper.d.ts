@@ -6,7 +6,7 @@ declare type ID = string;
 interface District {
     name: string,
     id: ID,
-    schools: [School]
+    schools: [School["id"]]
 }
 
 declare type SchoolType = ("Middle"|"High")
@@ -16,7 +16,7 @@ interface School {
     id: ID,
     districtId: District["id"],
     schoolType: SchoolType,
-    teams: [Team]
+    teams: [Team["id"]]
 }
 
 // This can be extended however makes sense. Possibly IDs or a Sport class. It just must include every sport.
@@ -37,8 +37,8 @@ interface Team {
     grade: number,
     schoolId: School["id"]
     // If rosters aren't available, return null
-    roster: [Player]
-    games: [Game]
+    roster: [Player["id"]]
+    games: [Game["id"]]
     sport: Sport
 }
 
