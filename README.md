@@ -6,7 +6,7 @@ We, Midtown Rulers, are offering a $300 bounty + $75 donation to open source lib
 
 Create a Typescript program using Node.js and the Puppeteer library to scrape data from Rank One Sport districts. The program should implement the Classes and Functions defined in the `scraper.d.ts` file that is attached below.
 
-[View scraper.d.ts](https://github.com/midtownrulers/r1scraper/blob/main/scraper.d.ts)
+[View scraper.d.ts](./scraper.d.ts)
 
 ## Bounty Rules
 
