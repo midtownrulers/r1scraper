@@ -9,7 +9,7 @@ interface District {
     schools: [School]
 }
 
-declare type SchoolType = ("Elementary"|"Middle"|"High")
+declare type SchoolType = ("Middle"|"High")
 
 interface School {
     name: string,
