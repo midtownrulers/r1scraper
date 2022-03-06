@@ -72,6 +72,7 @@ interface Game {
     endTime: Date
     homeTeamScore: number
     awayTeamScore: number
+    won: boolean
 
 }
 
