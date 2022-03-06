@@ -79,7 +79,7 @@ interface Game {
 
 
 // Maybe a district URL instead of an ID?
-declare type getDistrict = (id: string) => District;
+declare type GetDistrict = (id: string) => District;
 
 // If other arguments make sense here, please change them. They kinda look off to me. This goes for all districtId stuff.
 declare type GetSchool = (districtId: District["id"], id: School["id"]) => School;
