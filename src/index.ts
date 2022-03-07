@@ -662,14 +662,16 @@ export const getGames: GetGames = async (
       }
     }
 
-    const score = dom.querySelector(`#rpt_Games_lbl_Score_${id}`)?.textContent;
+    const score = dom
+      .querySelector(`#rpt_Games_lbl_Score_${id}`)
+      ?.textContent.replace(/\s\s+/g, " ");
 
     const won = score?.startsWith("W");
 
     if (filter?.won === true && won !== true) continue;
     if (filter?.won === false && won !== false) continue;
 
-    const homeScore = parseInt(score?.split(" ")[1]);
+    const homeScore = parseInt(score?.split(" ")[2]);
 
     if (
       filter?.ourScore &&
