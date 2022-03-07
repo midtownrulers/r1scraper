@@ -1,6 +1,6 @@
 {
-  "name": "rank-one-scraper",
-  "version": "0.0.0",
+  "name": "rank1scraper",
+  "version": "0.1.0",
   "description": "",
   "engines": {
     "node": ">= 16.13 <17"
@@ -30,8 +30,8 @@
     "test": "jest --coverage",
     "test:watch": "jest --watch"
   },
-  "author": "Jakub Synowiec <jsynowiec@users.noreply.github.com>",
-  "license": "Apache-2.0",
+  "author": "Midtown Rulers",
+  "license": "GPL-3.0-or-later",
   "dependencies": {
     "axios": "^0.26.0",
     "node-html-parser": "^5.2.0",
