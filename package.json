@@ -1,5 +1,5 @@
 {
-  "name": "rank1scraper",
+  "name": "r1scraper",
   "version": "0.1.0",
   "description": "",
   "engines": {
@@ -21,7 +21,7 @@
     "typescript": "~4.5.3"
   },
   "scripts": {
-    "start": "node build/src/main.js",
+    "start": "node build/src/index.js",
     "clean": "rimraf coverage build tmp",
     "prebuild": "npm run lint",
     "build": "tsc -p tsconfig.release.json",
