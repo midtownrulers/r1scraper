@@ -671,7 +671,7 @@ export const getGames: GetGames = async (
     if (filter?.won === true && won !== true) continue;
     if (filter?.won === false && won !== false) continue;
 
-    const homeScore = parseInt(score?.split(" ")[2]);
+    const homeScore = parseInt(score?.split(" ")[1]);
 
     if (
       filter?.ourScore &&
