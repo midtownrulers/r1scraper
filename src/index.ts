@@ -88,7 +88,7 @@ export const getSchools: GetSchools = async (
     });
 
   const middleSchools: [string, SchoolType][] = dom
-    .querySelectorAll("#schoolCont #middleSchool td a")
+    .querySelectorAll("#schoolCont #middleCont td a")
     .map((schoolElement): [string, SchoolType] => {
       const href = schoolElement.getAttribute("href");
       if (href) {
