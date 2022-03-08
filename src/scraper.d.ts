@@ -19,11 +19,14 @@ export interface School {
   sports: [Sport["id"], Sport["sportName"]][];
 }
 
+type SportsGender = ("M"|"F")
+
 export interface Sport {
   id: string;
   districtId: string;
   schoolId: string;
   sportName: string;
+  gender?: SportsGender;
   teams: Team["id"][];
 }
 
@@ -41,6 +44,7 @@ export interface Team {
   roster: Player["index"][] | null;
   games: Game["index"][] | null;
   sport: string;
+  gender: SportsGender;
 }
 
 export interface Player {
@@ -107,9 +111,10 @@ export declare type GetTeam = (
 export declare type GetTeams = (
   districtId: District["id"],
   schoolId: School["id"],
-  sport?: [string, string],
+  sport?: Sport["id"],
   // filter by grade or text in title
-  level?: string | number
+  level?: string | number,
+  gender?: SportsGender
 ) => Promise<Team[]>;
 
 // The cascading arguments are getting rediculous. Maybe there's a better solution, maybe not.

@@ -18,6 +18,7 @@ import {
   School,
   SchoolType,
   Sport,
+  SportsGender,
   Team,
 } from "./scraper";
 
@@ -270,7 +271,7 @@ export const getSchool: GetSchool = async (
 export const getSport = async (
   districtId: string,
   schoolId: string,
-  id: [string, string]
+  id: string
 ): Promise<Sport> => {
   const sport = await axios.get(
     "https://www.rankone.com/Schedules/View_Schedule_All_Web.aspx",
@@ -279,7 +280,7 @@ export const getSport = async (
         P: "0",
         D: districtId,
         S: schoolId,
-        Sp: id[0],
+        Sp: id,
         Mt: "0",
       },
     }
@@ -291,10 +292,11 @@ export const getSport = async (
     dom.toString().includes("There is no team found for the selected sport")
   ) {
     return {
-      id: id[0],
+      id: id,
       districtId,
       schoolId,
-      sportName: id[1],
+      sportName: "",
+      gender: null,
       teams: [],
     };
   }
@@ -317,11 +319,18 @@ export const getSport = async (
       return schoolId != null;
     });
 
+    let gender: SportsGender = null;
+    if(sportName.includes("(M)")) {
+      gender = "M"
+    } else if(sportName.includes("(F)")) {
+      gender = "F"
+    }
   return {
-    id: id[0],
+    id,
     districtId,
     schoolId,
     sportName,
+    gender,
     teams,
   };
 };
@@ -393,7 +402,12 @@ export const getTeam: GetTeam = async (
         return idx;
       });
   }
-
+  let gender: SportsGender = null;
+  if(teamName.includes("(M)")) {
+    gender = "M"
+  } else if(teamName.includes("(F)")) {
+    gender = "F"
+  }
   return {
     id,
     name: teamName,
@@ -401,14 +415,16 @@ export const getTeam: GetTeam = async (
     roster: playerIds,
     schoolId: schoolId,
     sport: sport,
+    gender: gender
   };
 };
 
 export const getTeams: GetTeams = async (
   districtId: District["id"],
   schoolId: School["id"],
-  sport?: [string, string],
-  level?: string | number
+  sport?: string,
+  level?: string | number,
+  gender?: SportsGender
 ): Promise<Team[]> => {
   const school: School = await getSchool(districtId, schoolId);
   const sports: Sport[] = [];
@@ -417,7 +433,7 @@ export const getTeams: GetTeams = async (
     sports.push(await getSport(districtId, schoolId, sport));
   } else {
     for (const sportId of school.sports) {
-      sports.push(await getSport(districtId, schoolId, sportId));
+      sports.push(await getSport(districtId, schoolId, sportId[0]));
     }
   }
 
@@ -427,14 +443,23 @@ export const getTeams: GetTeams = async (
     const teams = [];
     for (const teamId of sportObj.teams) {
       const team = await getTeam(districtId, schoolId, teamId, sportObj.id);
-
-      if (typeof level === "number" || typeof level === "string") {
-        if (team.name.includes(String(level))) {
-          teams.push(team);
+      
+      if(gender) {
+        if(team.gender == gender) {
+          checkLevel()
         }
       } else {
-        teams.push(team);
+        checkLevel()
       }
+      function checkLevel() {
+        if (typeof level === "number" || typeof level === "string") {
+            if (team.name.includes(String(level))) {
+              teams.push(team);
+            }
+          } else {
+            teams.push(team);
+          }
+        }
     }
     returnable = returnable.concat(teams);
   }
@@ -505,6 +530,13 @@ export const getPlayers: GetPlayers = async (
 
   const dom = parse(roster.data);
 
+  if(dom
+    .toString()
+    .includes(
+      "The roster for this team has not been made public, please check back later."
+    )) {
+      return [];
+    }
   const table = dom.querySelector("#gv_Program tbody");
 
   const returnable = [];
@@ -639,17 +671,6 @@ export const getGames: GetGames = async (
   ).length;
 
   const returnable: Game[] = [];
-
-  let homeGames: string = null;
-  if (filter?.home == null) {
-    homeGames = await getRawFilteredSchedule(
-      districtId,
-      schoolId,
-      sportId,
-      teamId,
-      true
-    );
-  }
 
   for (let id = 0; id < rowCount; id++) {
     const date = dom.querySelector(
@@ -805,10 +826,3 @@ const getRawFilteredSchedule = async (
 
   return content;
 };
-
-const districtId = "85186918-5A19-4676-A654-3F3AC054DD77"
-//getDistrict(districtId).then((dist) => console.log(dist))
-//getSchools(districtId,"Middle").then((schools)=> console.log(schools[0].id))
-//getSport(districtId,"2342",["7", "Basketball"])
-//getTeams(districtId,"2352",["7","Basketball"], 8).then((ids)=> console.log(ids[0]))
-getGame(districtId,"2352",[ '44590', '4' ],0, "7").then((games) => console.log(games))
