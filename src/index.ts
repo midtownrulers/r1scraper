@@ -761,6 +761,49 @@ export const getGames: GetGames = async (
 
     if (filter?.state && !filter?.state.includes(status)) continue;
 
+    const homeGames = await getRawFilteredSchedule(
+      districtId,
+      schoolId,
+      sportId,
+      teamId,
+      true
+    );
+    const homeGamesDom = parse(homeGames);
+  
+    let isHome = false;
+  
+    const rowCount = dom.querySelectorAll(
+      "tr[id^=rpt_Games_repeaterGameRow_]"
+    ).length;
+  
+    for (let id = 0; id < rowCount; id++) {
+      const homeDate = homeGamesDom.querySelector(
+        `#rpt_Games_lbl_Start_Date_${id}`
+      )?.textContent;
+  
+      const homeTime = homeGamesDom.querySelector(
+        `#rpt_Games_lbl_Start_Time_${id}`
+      )?.textContent;
+  
+      const homeOpponent = homeGamesDom.querySelector(
+        `#rpt_Games_lbl_Opponent_${id}`
+      )?.textContent;
+  
+      const homeScore = homeGamesDom.querySelector(
+        `#rpt_Games_lbl_Score_${id}`
+      )?.textContent;
+  
+      if (
+        homeDate === date &&
+        homeTime === time &&
+        homeOpponent === opponent &&
+        homeScore === score
+      ) {
+        isHome = true;
+        break;
+      }
+    }
+
     returnable.push({
       homeSchoolId: schoolId,
       homeTeamId: teamId,
@@ -773,6 +816,8 @@ export const getGames: GetGames = async (
       opponent: opponent,
       homeTeamScore: homeScore,
       awayTeamScore: awayScore,
+      home: isHome
+      
     });
   }
 

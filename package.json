@@ -10,10 +10,12 @@
     "@types/node": "~16.11.6",
     "@typescript-eslint/eslint-plugin": "~5.7.0",
     "@typescript-eslint/parser": "~5.7.0",
+    "concurrently": "^7.0.0",
     "eslint": "~8.4.1",
     "eslint-config-prettier": "~8.3.0",
     "eslint-plugin-jest": "~25.3.0",
     "jest": "~27.4.4",
+    "nodemon": "^2.0.15",
     "prettier": "~2.5.1",
     "rimraf": "~3.0.2",
     "ts-jest": "~27.1.1",
@@ -28,7 +30,8 @@
     "build:watch": "tsc -w -p tsconfig.release.json",
     "lint": "eslint . --ext .ts,.tsx",
     "test": "jest --coverage",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "dev": "concurrently \"nodemon build/src/index.js\" \"npm run build:watch\""
   },
   "author": "Midtown Rulers",
   "license": "GPL-3.0-or-later",
