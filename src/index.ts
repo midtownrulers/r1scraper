@@ -565,7 +565,9 @@ export const getGame: GetGame = async (
     `#rpt_Games_lbl_Opponent_${id}`
   )?.textContent;
 
-  const score = dom.querySelector(`#rpt_Games_lbl_Score_${id}`)?.textContent;
+  const score = dom
+      .querySelector(`#rpt_Games_lbl_Score_${id}`)
+      ?.textContent.replace(/\s\s+/g, " ");
 
   const homeScore = parseInt(score?.split(" ")[1]);
   const awayScore = parseInt(score?.split(" ")[3]);
@@ -574,49 +576,12 @@ export const getGame: GetGame = async (
 
   const asDate: Date = new Date(`${date}, ${today.getFullYear()} ${time}`);
 
-  const homeGames = await getRawFilteredSchedule(
-    districtId,
-    schoolId,
-    sportId,
-    teamId,
-    true
-  );
-  const homeGamesDom = parse(homeGames);
+  let isHome = false
+  const location = dom.querySelector(`#rpt_Games_lbl_Location_${id}`)?.textContent
 
-  let isHome = false;
-
-  const rowCount = homeGamesDom.querySelectorAll(
-    "tr[id^=rpt_Games_repeaterGameRow_]"
-  ).length;
-
-  for (let id = 0; id < rowCount; id++) {
-    const homeDate = homeGamesDom.querySelector(
-      `#rpt_Games_lbl_Start_Date_${id}`
-    )?.textContent;
-
-    const homeTime = homeGamesDom.querySelector(
-      `#rpt_Games_lbl_Start_Time_${id}`
-    )?.textContent;
-
-    const homeOpponent = homeGamesDom.querySelector(
-      `#rpt_Games_lbl_Opponent_${id}`
-    )?.textContent;
-
-    const homeScore = homeGamesDom.querySelector(
-      `#rpt_Games_lbl_Score_${id}`
-    )?.textContent;
-
-    if (
-      homeDate === date &&
-      homeTime === time &&
-      homeOpponent === opponent &&
-      homeScore === score
-    ) {
-      isHome = true;
-      break;
-    }
+  if(location == "VS") {
+    isHome = true;
   }
-
   return {
     homeSchoolId: schoolId,
     homeTeamId: teamId,
@@ -788,41 +753,13 @@ export const getGames: GetGames = async (
         home: filter.home,
       });
     } else {
-      const homeGamesDom = parse(homeGames);
+      
+      let isHome = false
+      const location = dom.querySelector(`#rpt_Games_lbl_Location_${id}`)?.textContent
 
-      let isHome = false;
-
-      const rowCount = dom.querySelectorAll(
-        "tr[id^=rpt_Games_repeaterGameRow_]"
-      ).length;
-
-      for (let id = 0; id < rowCount; id++) {
-        const homeDate = homeGamesDom.querySelector(
-          `#rpt_Games_lbl_Start_Date_${id}`
-        )?.textContent;
-
-        const homeTime = homeGamesDom.querySelector(
-          `#rpt_Games_lbl_Start_Time_${id}`
-        )?.textContent;
-
-        const homeOpponent = homeGamesDom.querySelector(
-          `#rpt_Games_lbl_Opponent_${id}`
-        )?.textContent;
-
-        const homeScore = homeGamesDom.querySelector(
-          `#rpt_Games_lbl_Score_${id}`
-        )?.textContent;
-
-        if (
-          homeDate === date &&
-          homeTime === time &&
-          homeOpponent === opponent &&
-          homeScore === score
-        ) {
-          isHome = true;
-          break;
-        }
-      }
+      if(location == "VS") {
+        isHome = true;
+      } 
 
       returnable.push({
         homeSchoolId: schoolId,
@@ -851,7 +788,7 @@ const getRawFilteredSchedule = async (
   teamId: Team["id"],
   home: boolean
 ): Promise<string> => {
-  const browser = await puppeteer.launch({ headless: false });
+  const browser = await puppeteer.launch({ headless: true});
   const page = await browser.newPage();
   await page.goto(
     `https://www.rankone.com/Schedules/View_Schedule_Web.aspx?P=0&D=${districtId}&S=${schoolId}&Sp=${sportId}&Tm=${teamId[0]}&L=${teamId[1]}&Mt=0`
@@ -868,3 +805,10 @@ const getRawFilteredSchedule = async (
 
   return content;
 };
+
+const districtId = "85186918-5A19-4676-A654-3F3AC054DD77"
+//getDistrict(districtId).then((dist) => console.log(dist))
+//getSchools(districtId,"Middle").then((schools)=> console.log(schools[0].id))
+//getSport(districtId,"2342",["7", "Basketball"])
+//getTeams(districtId,"2352",["7","Basketball"], 8).then((ids)=> console.log(ids[0]))
+getGame(districtId,"2352",[ '44590', '4' ],0, "7").then((games) => console.log(games))
