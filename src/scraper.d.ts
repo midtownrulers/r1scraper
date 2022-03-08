@@ -74,6 +74,7 @@ export interface Game {
   startTime?: Date;
   // I don't know if endTimes are available.
   // Maybe just a TTL for an hour, and then progressivley get lower if state is not finished.
+  home: boolean;
 
   homeTeamScore?: number;
   awayTeamScore?: number;
