@@ -1,4 +1,6 @@
-![r1scraper logo](r1scraper.png)
+<p align="center">
+  <img src="r1scraper.png" alt="r1scraper logo"/>
+</p>
 
 # r1scraper
 
