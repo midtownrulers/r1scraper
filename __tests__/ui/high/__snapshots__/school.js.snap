@@ -1,0 +1,175 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`district name should match the snapshot 1`] = `"<span id=\\"lbl_DistrictName\\" class=\\"lblStyle_District\\">Austin ISD</span>"`;
+
+exports[`school name should match the snapshot 1`] = `"<span id=\\"lbl_PageTitle\\">Austin High School</span>"`;
+
+exports[`sports table should match the snapshot 1`] = `
+"<div id=\\"content\\" style=\\"border:none;font-family:Arial, Helvetica, sans-serif;padding-top:20px;\\">
+        <div id=\\"div_Error\\" style=\\"text-align: center; font-size:15px; display:none;\\">
+            <span id=\\"lbl_Error\\" style=\\"color:Red;\\"></span>
+        </div>
+        <div id=\\"schoolCont\\" class=\\"flex fxd-col\\" style=\\"position:relative;\\">
+            <div class=\\"flex fxd-row\\" style=\\"width:100%\\">
+                <div id=\\"highCont\\" class=\\"flex fxd-col wid50per pad10\\" style=\\"\\">
+                    <div id=\\"dvSubTitle1\\" class=\\"scheduleSubTitle NonMasterSubTitle\\" style=\\"color: white; text-align: center;\\">
+                        <span id=\\"lbl_Sub_Title1\\"><b>MENS</b></span>
+                    </div>
+                    
+                            <table width=\\"100%\\" class=\\"VSTable\\" id=\\"highTable\\">  
+                                <tbody>
+                                    
+                            <tr>
+                                <td align=\\"left\\" width=\\"100%\\">
+                                    <a id=\\"rpt_Sub_lnk_Link_0\\" href=\\"https://www.rankone.com/Schedules/View_Schedule_All_Web.aspx?P=0&amp;D=85186918-5A19-4676-A654-3F3AC054DD77&amp;S=2331&amp;Sp=17&amp;Mt=0\\">Baseball</a>
+                                </td>
+                            </tr>                                                       
+                        
+                            <tr>
+                                <td align=\\"left\\" width=\\"100%\\">
+                                    <a id=\\"rpt_Sub_lnk_Link_1\\" href=\\"https://www.rankone.com/Schedules/View_Schedule_All_Web.aspx?P=0&amp;D=85186918-5A19-4676-A654-3F3AC054DD77&amp;S=2331&amp;Sp=7&amp;Mt=0\\">Basketball</a>
+                                </td>
+                            </tr>                                                       
+                        
+                            <tr>
+                                <td align=\\"left\\" width=\\"100%\\">
+                                    <a id=\\"rpt_Sub_lnk_Link_2\\" href=\\"https://www.rankone.com/Schedules/View_Schedule_All_Web.aspx?P=0&amp;D=85186918-5A19-4676-A654-3F3AC054DD77&amp;S=2331&amp;Sp=1&amp;Mt=0\\">Cross Country</a>
+                                </td>
+                            </tr>                                                       
+                        
+                            <tr>
+                                <td align=\\"left\\" width=\\"100%\\">
+                                    <a id=\\"rpt_Sub_lnk_Link_3\\" href=\\"https://www.rankone.com/Schedules/View_Schedule_All_Web.aspx?P=0&amp;D=85186918-5A19-4676-A654-3F3AC054DD77&amp;S=2331&amp;Sp=3&amp;Mt=0\\">Football</a>
+                                </td>
+                            </tr>                                                       
+                        
+                            <tr>
+                                <td align=\\"left\\" width=\\"100%\\">
+                                    <a id=\\"rpt_Sub_lnk_Link_4\\" href=\\"https://www.rankone.com/Schedules/View_Schedule_All_Web.aspx?P=0&amp;D=85186918-5A19-4676-A654-3F3AC054DD77&amp;S=2331&amp;Sp=18&amp;Mt=0\\">Golf</a>
+                                </td>
+                            </tr>                                                       
+                        
+                            <tr>
+                                <td align=\\"left\\" width=\\"100%\\">
+                                    <a id=\\"rpt_Sub_lnk_Link_5\\" href=\\"https://www.rankone.com/Schedules/View_Schedule_All_Web.aspx?P=0&amp;D=85186918-5A19-4676-A654-3F3AC054DD77&amp;S=2331&amp;Sp=4&amp;Mt=0\\">Soccer</a>
+                                </td>
+                            </tr>                                                       
+                        
+                            <tr>
+                                <td align=\\"left\\" width=\\"100%\\">
+                                    <a id=\\"rpt_Sub_lnk_Link_6\\" href=\\"https://www.rankone.com/Schedules/View_Schedule_All_Web.aspx?P=0&amp;D=85186918-5A19-4676-A654-3F3AC054DD77&amp;S=2331&amp;Sp=14&amp;Mt=0\\">Swimming &amp; Diving</a>
+                                </td>
+                            </tr>                                                       
+                        
+                            <tr>
+                                <td align=\\"left\\" width=\\"100%\\">
+                                    <a id=\\"rpt_Sub_lnk_Link_7\\" href=\\"https://www.rankone.com/Schedules/View_Schedule_All_Web.aspx?P=0&amp;D=85186918-5A19-4676-A654-3F3AC054DD77&amp;S=2331&amp;Sp=22&amp;Mt=0\\">Tennis</a>
+                                </td>
+                            </tr>                                                       
+                        
+                            <tr>
+                                <td align=\\"left\\" width=\\"100%\\">
+                                    <a id=\\"rpt_Sub_lnk_Link_8\\" href=\\"https://www.rankone.com/Schedules/View_Schedule_All_Web.aspx?P=0&amp;D=85186918-5A19-4676-A654-3F3AC054DD77&amp;S=2331&amp;Sp=23&amp;Mt=0\\">Track &amp; Field</a>
+                                </td>
+                            </tr>                                                       
+                        
+                            <tr>
+                                <td align=\\"left\\" width=\\"100%\\">
+                                    <a id=\\"rpt_Sub_lnk_Link_9\\" href=\\"https://www.rankone.com/Schedules/View_Schedule_All_Web.aspx?P=0&amp;D=85186918-5A19-4676-A654-3F3AC054DD77&amp;S=2331&amp;Sp=16&amp;Mt=0\\">Wrestling</a>
+                                </td>
+                            </tr>                                                       
+                        
+                                </tbody>                                                  
+                            </table>
+                        
+                </div>           
+                <div id=\\"middleCont\\" class=\\"flex fxd-col wid50per pad10\\" style=\\"\\">
+                    <div id=\\"dvSubTitle2\\" class=\\"scheduleSubTitle NonMasterSubTitle\\" style=\\"color: white; text-align: center;\\">
+                        <span id=\\"lbl_Sub_Title2\\"><b>WOMENS</b></span>
+                    </div>                
+                    
+                            <table width=\\"100%\\" class=\\"VSTable\\" id=\\"middleTable\\">                    
+                                
+                            <tbody><tr>
+                                <td align=\\"left\\" width=\\"100%\\">
+                                    <a id=\\"rpt_Sub2_lnk_Link2_0\\" href=\\"https://www.rankone.com/Schedules/View_Schedule_All_Web.aspx?P=0&amp;D=85186918-5A19-4676-A654-3F3AC054DD77&amp;S=2331&amp;Sp=26&amp;Mt=0\\">Basketball</a>
+                                </td>
+                            </tr>                                                            
+                        
+                            <tr>
+                                <td align=\\"left\\" width=\\"100%\\">
+                                    <a id=\\"rpt_Sub2_lnk_Link2_1\\" href=\\"https://www.rankone.com/Schedules/View_Schedule_All_Web.aspx?P=0&amp;D=85186918-5A19-4676-A654-3F3AC054DD77&amp;S=2331&amp;Sp=24&amp;Mt=0\\">Cross Country</a>
+                                </td>
+                            </tr>                                                            
+                        
+                            <tr>
+                                <td align=\\"left\\" width=\\"100%\\">
+                                    <a id=\\"rpt_Sub2_lnk_Link2_2\\" href=\\"https://www.rankone.com/Schedules/View_Schedule_All_Web.aspx?P=0&amp;D=85186918-5A19-4676-A654-3F3AC054DD77&amp;S=2331&amp;Sp=34&amp;Mt=0\\">Golf</a>
+                                </td>
+                            </tr>                                                            
+                        
+                            <tr>
+                                <td align=\\"left\\" width=\\"100%\\">
+                                    <a id=\\"rpt_Sub2_lnk_Link2_3\\" href=\\"https://www.rankone.com/Schedules/View_Schedule_All_Web.aspx?P=0&amp;D=85186918-5A19-4676-A654-3F3AC054DD77&amp;S=2331&amp;Sp=25&amp;Mt=0\\">Soccer</a>
+                                </td>
+                            </tr>                                                            
+                        
+                            <tr>
+                                <td align=\\"left\\" width=\\"100%\\">
+                                    <a id=\\"rpt_Sub2_lnk_Link2_4\\" href=\\"https://www.rankone.com/Schedules/View_Schedule_All_Web.aspx?P=0&amp;D=85186918-5A19-4676-A654-3F3AC054DD77&amp;S=2331&amp;Sp=21&amp;Mt=0\\">Softball</a>
+                                </td>
+                            </tr>                                                            
+                        
+                            <tr>
+                                <td align=\\"left\\" width=\\"100%\\">
+                                    <a id=\\"rpt_Sub2_lnk_Link2_5\\" href=\\"https://www.rankone.com/Schedules/View_Schedule_All_Web.aspx?P=0&amp;D=85186918-5A19-4676-A654-3F3AC054DD77&amp;S=2331&amp;Sp=32&amp;Mt=0\\">Swimming &amp; Diving</a>
+                                </td>
+                            </tr>                                                            
+                        
+                            <tr>
+                                <td align=\\"left\\" width=\\"100%\\">
+                                    <a id=\\"rpt_Sub2_lnk_Link2_6\\" href=\\"https://www.rankone.com/Schedules/View_Schedule_All_Web.aspx?P=0&amp;D=85186918-5A19-4676-A654-3F3AC054DD77&amp;S=2331&amp;Sp=36&amp;Mt=0\\">Tennis</a>
+                                </td>
+                            </tr>                                                            
+                        
+                            <tr>
+                                <td align=\\"left\\" width=\\"100%\\">
+                                    <a id=\\"rpt_Sub2_lnk_Link2_7\\" href=\\"https://www.rankone.com/Schedules/View_Schedule_All_Web.aspx?P=0&amp;D=85186918-5A19-4676-A654-3F3AC054DD77&amp;S=2331&amp;Sp=37&amp;Mt=0\\">Track &amp; Field</a>
+                                </td>
+                            </tr>                                                            
+                        
+                            <tr>
+                                <td align=\\"left\\" width=\\"100%\\">
+                                    <a id=\\"rpt_Sub2_lnk_Link2_8\\" href=\\"https://www.rankone.com/Schedules/View_Schedule_All_Web.aspx?P=0&amp;D=85186918-5A19-4676-A654-3F3AC054DD77&amp;S=2331&amp;Sp=5&amp;Mt=0\\">Volleyball</a>
+                                </td>
+                            </tr>                                                            
+                        
+                            <tr>
+                                <td align=\\"left\\" width=\\"100%\\">
+                                    <a id=\\"rpt_Sub2_lnk_Link2_9\\" href=\\"https://www.rankone.com/Schedules/View_Schedule_All_Web.aspx?P=0&amp;D=85186918-5A19-4676-A654-3F3AC054DD77&amp;S=2331&amp;Sp=43&amp;Mt=0\\">Wrestling</a>
+                                </td>
+                            </tr>                                                            
+                        
+                            </tbody></table>
+                        
+                </div>
+                <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                
+            </div>
+            <div id=\\"lblApp\\" class=\\"flex fxd-col fx-justcenter fx-aligncenter pad15\\" style=\\"text-align: center\\">
+                <div id=\\"dvApp\\" class=\\"pad15\\" style=\\"text-align: center\\">
+                    Download the Rank One app for a mobile optimized experience!
+                </div>
+                <div class=\\"flex fxd-row\\" style=\\"\\">
+                    <a href=\\"https://apps.apple.com/us/app/rank-one/id1579070294\\" target=\\"_blank\\">
+                        <img id=\\"Image1\\" src=\\"../images/btn-app-store.png\\" style=\\"background-color: Black; height: 50px;\\">
+                    </a>
+                    &nbsp; &nbsp; &nbsp;
+                    <a href=\\"https://play.google.com/store/apps/details?id=com.rankone.r1&amp;hl=en\\" target=\\"_blank\\">
+                        <img id=\\"Image2\\" src=\\"../images/btn-google-play.png\\" style=\\"background-color: Black; height: 50px;\\">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>"
+`;

@@ -1,4 +1,3 @@
-import axios from "axios";
 import { parse } from "node-html-parser";
 import {
   District,
@@ -13,6 +12,7 @@ import {
   GetSchool,
   GetSchools,
   GetTeam,
+  CreateTeamMap,
   GetTeams,
   Player,
   School,
@@ -20,22 +20,29 @@ import {
   Sport,
   SportsGender,
   Team,
+  TeamMap,
+  GetStandings,
 } from "./scraper";
 
-import puppeteer = require("puppeteer");
+import puppeteer, { registerCustomQueryHandler } from "puppeteer";
+import got from "got"
+
+import * as Promise from "bluebird";
+
+import crypto from "node:crypto";
 
 export const getDistrict: GetDistrict = async (id): Promise<District> => {
-  const district = await axios.get(
+  const district = await got.get(
     "https://www.rankonesport.com/Schedules/View_Schedule_All_Web.aspx",
     {
-      params: {
+      searchParams: {
         D: id,
         MT: 0,
       },
     }
   );
 
-  const dom = parse(district.data);
+  const dom = parse(district.body);
 
   const districtName = dom.querySelector("#lbl_DistrictName")?.innerText ?? "";
 
@@ -63,17 +70,17 @@ export const getSchools: GetSchools = async (
   districtId: string,
   schoolType?: SchoolType
 ): Promise<School[]> => {
-  const district = await axios.get(
+  const district = await got.get(
     "https://www.rankonesport.com/Schedules/View_Schedule_All_Web.aspx",
     {
-      params: {
+      searchParams: {
         D: districtId,
         MT: 0,
       },
     }
   );
 
-  const dom = parse(district.data);
+  const dom = parse(district.body);
 
   const highSchools = dom
     .querySelectorAll("#schoolCont #highCont td a")
@@ -110,7 +117,7 @@ export const getSchools: GetSchools = async (
   }
 
   const promises: Promise<School>[] = schools.map((school) => {
-    return new Promise((resolve) => {
+    return new Promise.Promise((resolve) => {
       getSchoolWithType(districtId, school[0], school[1]).then(
         (asSchoolType) => {
           resolve({
@@ -132,17 +139,17 @@ export const getSchoolIds = async (
   districtId: string,
   schoolType?: SchoolType
 ): Promise<School["id"][]> => {
-  const district = await axios.get(
+  const district = await got.get(
     "https://www.rankonesport.com/Schedules/View_Schedule_All_Web.aspx",
     {
-      params: {
+      searchParams: {
         D: districtId,
         MT: 0,
       },
     }
   );
 
-  const dom = parse(district.data);
+  const dom = parse(district.body);
 
   const highSchools = dom
     .querySelectorAll("#schoolCont #highCont td a")
@@ -186,10 +193,10 @@ export const getSchoolWithType = async (
   schoolId: string,
   schoolType: SchoolType
 ): Promise<School> => {
-  const school = await axios.get(
+  const school = await got.get(
     "https://www.rankone.com/Schedules/View_Schedule_All_Web.aspx",
     {
-      params: {
+      searchParams: {
         P: "0",
         D: districtId,
         S: schoolId,
@@ -198,7 +205,7 @@ export const getSchoolWithType = async (
     }
   );
 
-  const dom = parse(school.data);
+  const dom = parse(school.body);
 
   const schoolName = dom.querySelector("#lbl_PageTitle")?.innerText ?? "";
 
@@ -228,10 +235,10 @@ export const getSchool: GetSchool = async (
   districtId: string,
   schoolId: string
 ): Promise<School> => {
-  const school = await axios.get(
+  const school = await got.get(
     "https://www.rankone.com/Schedules/View_Schedule_All_Web.aspx",
     {
-      params: {
+      searchParams: {
         P: "0",
         D: districtId,
         S: schoolId,
@@ -240,7 +247,7 @@ export const getSchool: GetSchool = async (
     }
   );
 
-  const dom = parse(school.data);
+  const dom = parse(school.body);
 
   const schoolName = dom.querySelector("#lbl_PageTitle")?.innerText ?? "";
 
@@ -273,10 +280,10 @@ export const getSport = async (
   schoolId: string,
   id: string
 ): Promise<Sport> => {
-  const sport = await axios.get(
+  const sport = await got.get(
     "https://www.rankone.com/Schedules/View_Schedule_All_Web.aspx",
     {
-      params: {
+      searchParams: {
         P: "0",
         D: districtId,
         S: schoolId,
@@ -286,7 +293,7 @@ export const getSport = async (
     }
   );
 
-  const dom = parse(sport.data);
+  const dom = parse(sport.body);
 
   if (
     dom.toString().includes("There is no team found for the selected sport")
@@ -341,10 +348,10 @@ export const getTeam: GetTeam = async (
   id: [string, string],
   sport: string
 ): Promise<Team> => {
-  const games = await axios.get(
+  const games = await got.get(
     "https://www.rankone.com/Schedules/View_Schedule_Web.aspx",
     {
-      params: {
+      searchParams: {
         D: districtId,
         S: schoolId,
         Sp: sport,
@@ -355,7 +362,7 @@ export const getTeam: GetTeam = async (
     }
   );
 
-  const gamesDom = parse(games.data);
+  const gamesDom = parse(games.body);
 
   let gameIds: Team["games"] = null;
 
@@ -370,10 +377,10 @@ export const getTeam: GetTeam = async (
       });
   }
 
-  const roster = await axios.get(
+  const roster = await got.get(
     "https://www.rankone.com/Schedules/View_Program.aspx",
     {
-      params: {
+      searchParams: {
         P: "0",
         D: districtId,
         S: schoolId,
@@ -385,7 +392,7 @@ export const getTeam: GetTeam = async (
     }
   );
 
-  const rosterDom = parse(roster.data);
+  const rosterDom = parse(roster.body);
 
   let playerIds: Team["roster"] = null;
 
@@ -408,6 +415,25 @@ export const getTeam: GetTeam = async (
   } else if(teamName.includes("(F)")) {
     gender = "F"
   }
+
+  let totalWins = 0
+  let totalLosses = 0
+  let netRecord = 0
+  
+  
+  if(gameIds) {
+    await Promise.each(gameIds, async (gameId) => {
+      const game = await getGame(districtId,schoolId,id,gameId,sport)
+      if(game.won) {
+        totalWins++
+        netRecord++
+      } else {
+        totalLosses++
+        netRecord--
+      }
+    }) 
+  }
+
   return {
     id,
     name: teamName,
@@ -415,7 +441,10 @@ export const getTeam: GetTeam = async (
     roster: playerIds,
     schoolId: schoolId,
     sport: sport,
-    gender: gender
+    gender: gender,
+    totalWins: totalWins,
+    totalLosses: totalLosses,
+    netRecord: netRecord
   };
 };
 
@@ -443,15 +472,8 @@ export const getTeams: GetTeams = async (
     const teams = [];
     for (const teamId of sportObj.teams) {
       const team = await getTeam(districtId, schoolId, teamId, sportObj.id);
-      
-      if(gender) {
-        if(team.gender == gender) {
-          checkLevel()
-        }
-      } else {
-        checkLevel()
-      }
-      function checkLevel() {
+
+      const checkLevel = () => {
         if (typeof level === "number" || typeof level === "string") {
             if (team.name.includes(String(level))) {
               teams.push(team);
@@ -460,6 +482,14 @@ export const getTeams: GetTeams = async (
             teams.push(team);
           }
         }
+
+      if(gender) {
+        if(team.gender == gender) {
+          checkLevel()
+        }
+      } else {
+        checkLevel()
+      }
     }
     returnable = returnable.concat(teams);
   }
@@ -474,10 +504,10 @@ export const getPlayer: GetPlayer = async (
   id: Player["index"],
   sportId: Sport["id"]
 ): Promise<Player> => {
-  const roster = await axios.get(
+  const roster = await got.get(
     "https://www.rankone.com/Schedules/View_Program.aspx",
     {
-      params: {
+      searchParams: {
         D: districtId,
         S: schoolId,
         L: teamId[1],
@@ -488,7 +518,7 @@ export const getPlayer: GetPlayer = async (
     }
   );
 
-  const dom = parse(roster.data);
+  const dom = parse(roster.body);
 
   const table = dom.querySelector("#gv_Program tbody");
 
@@ -514,10 +544,10 @@ export const getPlayers: GetPlayers = async (
   teamId: Team["id"],
   sportId: Sport["id"]
 ): Promise<Player[]> => {
-  const roster = await axios.get(
+  const roster = await got.get(
     "https://www.rankone.com/Schedules/View_Program.aspx",
     {
-      params: {
+      searchParams: {
         D: districtId,
         S: schoolId,
         L: teamId[1],
@@ -528,7 +558,7 @@ export const getPlayers: GetPlayers = async (
     }
   );
 
-  const dom = parse(roster.data);
+  const dom = parse(roster.body);
 
   if(dom
     .toString()
@@ -562,17 +592,42 @@ export const getPlayers: GetPlayers = async (
   return returnable;
 };
 
+export const createTeamMap: CreateTeamMap = async ( districtId: District["id"], schoolType: SchoolType, sportId: Sport["id"], level: string | number): Promise<TeamMap> => {
+
+  // FIX TEAM MAP - 8th grade teams don't show up
+
+
+  const map: TeamMap = new Map()
+
+  const allSchools = await getSchools(districtId, schoolType)
+
+  await Promise.each(allSchools, async (school: School) => {
+      const sport = await getSport(districtId, school.id, sportId)
+      await Promise.each(sport.teams, async (teamId: Team["id"]) => {
+        const team = await getTeam(districtId,school.id,teamId,sport.id)
+        const splitName = team.name.split(`(${team.gender}) `)
+        if (team.name.includes(String(level))) {
+          map.set(splitName[1], team)
+        }
+        return;
+      })
+    return;
+  })
+  return map;
+}
+
 export const getGame: GetGame = async (
   districtId: District["id"],
   schoolId: School["id"],
   teamId: Team["id"],
   id: Game["index"],
-  sportId: Sport["id"]
+  sportId: Sport["id"],
+  teamMap?: TeamMap,
 ): Promise<Game> => {
-  const games = await axios.get(
+  const games = await got.get(
     "https://www.rankone.com/Schedules/View_Schedule_Web.aspx",
     {
-      params: {
+      searchParams: {
         D: districtId,
         S: schoolId,
         Sp: sportId,
@@ -583,7 +638,7 @@ export const getGame: GetGame = async (
     }
   );
 
-  const dom = parse(games.data);
+  const dom = parse(games.body);
 
   const date = dom.querySelector(
     `#rpt_Games_lbl_Start_Date_${id}`
@@ -614,6 +669,14 @@ export const getGame: GetGame = async (
   if(location == "VS") {
     isHome = true;
   }
+
+  let opponentTeamId: Team["id"], opponentSchoolId: School["id"] = null
+  if (teamMap) {
+    const opponentTeam = teamMap.get(opponent)
+    opponentTeamId = opponentTeam.id
+    opponentSchoolId = opponentTeam.schoolId
+  }
+
   return {
     homeSchoolId: schoolId,
     homeTeamId: teamId,
@@ -624,6 +687,8 @@ export const getGame: GetGame = async (
     won: score?.startsWith("W"),
     startTime: isNaN(asDate.getTime()) ? undefined : asDate,
     opponent: opponent,
+    opponentTeamId: opponentTeamId,
+    opponentSchoolId: opponentSchoolId,
     homeTeamScore: homeScore,
     awayTeamScore: awayScore,
     home: isHome,
@@ -635,7 +700,8 @@ export const getGames: GetGames = async (
   schoolId: School["id"],
   teamId: Team["id"],
   sportId: Sport["id"],
-  filter?: GameFilter
+  filter?: GameFilter,
+  teamMap?: TeamMap
 ): Promise<Game[]> => {
   let html = "";
 
@@ -648,10 +714,10 @@ export const getGames: GetGames = async (
       filter?.home
     );
   } else {
-    const games = await axios.get(
+    const games = await got.get(
       "https://www.rankone.com/Schedules/View_Schedule_Web.aspx",
       {
-        params: {
+        searchParams: {
           D: districtId,
           S: schoolId,
           Sp: sportId,
@@ -661,7 +727,7 @@ export const getGames: GetGames = async (
         },
       }
     );
-    html = games.data;
+    html = games.body;
   }
 
   const dom = parse(html);
@@ -685,6 +751,14 @@ export const getGames: GetGames = async (
       `#rpt_Games_lbl_Opponent_${id}`
     )?.textContent;
 
+    let opponentTeamId: Team["id"], opponentSchoolId: School["id"] = null
+    if (teamMap) {
+      const opponentTeam = teamMap.get(crypto.createHmac("sha256","basketball").update(`${opponent}${sportId}`).digest("hex"))
+      if(opponentTeam) {
+        opponentTeamId = opponentTeam.id
+        opponentSchoolId = opponentTeam.schoolId
+      }
+    }
     if (filter?.opponent?.filterExact || filter?.opponent?.filterLeniant) {
       if (opponent == null) continue;
 
@@ -712,38 +786,37 @@ export const getGames: GetGames = async (
     if (filter?.won === true && won !== true) continue;
     if (filter?.won === false && won !== false) continue;
 
-    const homeScore = parseInt(score?.split(" ")[1]);
+    const winnerScore = won ? parseInt(score?.split(" ")[1]) : parseInt(score?.split(" ")[3]);
 
     if (
       filter?.ourScore &&
       !filter?.ourScore[1] &&
-      filter?.ourScore[0] !== homeScore
+      filter?.ourScore[0] !== winnerScore
     )
       continue;
     if (
       filter?.ourScore &&
       filter?.ourScore[1] &&
-      filter?.ourScore[0] >= homeScore
+      filter?.ourScore[0] >= winnerScore
     )
       continue;
 
-    const awayScore = parseInt(score?.split(" ")[3]);
+    const loserScore = won ? parseInt(score?.split(" ")[3]) : parseInt(score?.split(" ")[1]);
 
     if (
       filter?.opponentScore &&
       !filter?.opponentScore[1] &&
-      filter?.opponentScore[0] !== awayScore
+      filter?.opponentScore[0] !== loserScore
     )
       continue;
     if (
       filter?.opponentScore &&
       filter?.opponentScore[1] &&
-      filter?.opponentScore[0] >= awayScore
+      filter?.opponentScore[0] >= loserScore
     )
       continue;
 
     const today = new Date();
-
     const asDate: Date = new Date(`${date}, ${today.getFullYear()} ${time}`);
 
     if (
@@ -769,8 +842,10 @@ export const getGames: GetGames = async (
         won,
         startTime: isNaN(asDate.getTime()) ? undefined : asDate,
         opponent: opponent,
-        homeTeamScore: homeScore,
-        awayTeamScore: awayScore,
+        opponentTeamId: opponentTeamId,
+        opponentSchoolId: opponentSchoolId,
+        winnerScore,
+        loserScore,
         home: filter.home,
       });
     } else {
@@ -782,6 +857,8 @@ export const getGames: GetGames = async (
         isHome = true;
       } 
 
+
+
       returnable.push({
         homeSchoolId: schoolId,
         homeTeamId: teamId,
@@ -792,8 +869,10 @@ export const getGames: GetGames = async (
         won,
         startTime: isNaN(asDate.getTime()) ? undefined : asDate,
         opponent: opponent,
-        homeTeamScore: homeScore,
-        awayTeamScore: awayScore,
+        opponentTeamId: opponentTeamId,
+        opponentSchoolId: opponentSchoolId,
+        winnerScore,
+        loserScore,
         home: isHome,
       });
     }
@@ -802,6 +881,47 @@ export const getGames: GetGames = async (
   return returnable;
 };
 
+export const getStandings: GetStandings = async ( 
+  level: string | number,
+  teamMap: TeamMap
+) => {
+  const teams: [Team] = [{
+    name: undefined,
+    id: [undefined,undefined],
+    schoolId: undefined,
+    // If rosters aren't available, return null
+    roster: null,
+    games: null,
+    sport: undefined,
+    gender: undefined,
+    totalWins: undefined,
+    totalLosses: undefined,
+    netRecord: undefined
+  }];
+  await Promise.each(teamMap.values(), async (team: Team) => {
+    if (typeof level === "number" || typeof level === "string") {
+      console.log(team.name.includes("8"))
+      if (team.name.includes(String(level))) {
+        console.log(true)
+        teams.push(team);
+      }
+    } else {
+      teams.push(team);
+    }
+  })
+
+  if(teams.length > 1) {
+    try { 
+      teams.shift()
+    } catch(e) {
+      return;
+    }
+  }
+  const sortedArray = teams.sort((a: Team,b: Team) => {
+    return a.netRecord - b.netRecord
+  })
+  return sortedArray.reverse()
+}
 const getRawFilteredSchedule = async (
   districtId: District["id"],
   schoolId: School["id"],

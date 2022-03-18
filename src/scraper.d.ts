@@ -19,7 +19,7 @@ export interface School {
   sports: [Sport["id"], Sport["sportName"]][];
 }
 
-type SportsGender = ("M"|"F")
+export type SportsGender = ("M"|"F")
 
 export interface Sport {
   id: string;
@@ -45,6 +45,9 @@ export interface Team {
   games: Game["index"][] | null;
   sport: string;
   gender: SportsGender;
+  totalWins: number;
+  totalLosses: number;
+  netRecord: number;
 }
 
 export interface Player {
@@ -74,16 +77,20 @@ export interface Game {
   sport: Sport["id"];
 
   opponent?: string;
+  opponentTeamId?: Team["id"]
+  opponentSchoolId?: School["id"]
 
   startTime?: Date;
   // I don't know if endTimes are available.
   // Maybe just a TTL for an hour, and then progressivley get lower if state is not finished.
   home: boolean;
 
-  homeTeamScore?: number;
-  awayTeamScore?: number;
+  winnerScore?: number;
+  loserScore?: number;
   won?: boolean;
 }
+
+export declare type TeamMap = Map<string,Team>
 
 // Getter Functions
 
@@ -100,6 +107,12 @@ export declare type GetSchools = (
   districtId: District["id"],
   schoolType?: SchoolType
 ) => Promise<School[]>;
+
+export declare type GetSport = (
+  districtId: District["id"],
+  schoolId: School["id"],
+  sportId: Sport["id"]
+) => Promise<Sport>;
 
 export declare type GetTeam = (
   districtId: District["id"],
@@ -139,7 +152,8 @@ export declare type GetGame = (
   schoolId: School["id"],
   teamId: Team["id"],
   id: Game["index"],
-  sportId: Sport["id"]
+  sportId: Sport["id"],
+  teamMap?: TeamMap,
 ) => Promise<Game>;
 
 export interface GameFilter {
@@ -166,5 +180,21 @@ export declare type GetGames = (
   schoolId: School["id"],
   teamId: Team["id"],
   sportId: Sport["id"],
-  filter?: GameFilter
+  filter?: GameFilter,
+  teamMap?: TeamMap,
 ) => Promise<Game[]>;
+
+
+export declare type CreateTeamMap = (
+  districtId: District["id"],
+  schoolType: SchoolType,
+  sportId: Sport["id"],
+  level: string | number
+) => Promise<TeamMap>
+
+export declare type GetStandings = (
+  level: string | number,
+  teamMap: TeamMap
+) => Promise<Team[]>
+
+export {};

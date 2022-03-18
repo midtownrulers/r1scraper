@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`district name should match the snapshot 1`] = `"<a id=\\"lnk_District\\" href=\\"https://www.rankone.com/Schedules/View_Schedule_All_Web.aspx?P=0&amp;D=85186918-5A19-4676-A654-3F3AC054DD77&amp;Mt=0\\" style=\\"color:white !important;\\">Austin ISD</a>"`;
+
+exports[`school info block should match the snapshot 1`] = `
+"<div class=\\"col-sm-5 col-xs-12\\">
+                                    <div style=\\"padding-top: 10px; font-family: Arial, Helvetica, sans-serif;\\">
+                                        <span id=\\"lbl_Description\\" style=\\"display:inline-block;height:100px;\\"><p style=\\"margin-bottom:7px;\\"><b style=\\"font-size:28px;\\">Lively Middle School</b></p><p style=\\"font-size:16px;margin-bottom:4px;\\">8th grade Basketball (M) Lively - A Team</p><p style=\\"font-weight:bold;font-size:16px;\\">Game Schedule</p></span>
+                                    </div>
+                                    <div style=\\"text-align: right; color: red;\\">
+                                        
+                                        
+                                    </div>
+                                </div>"
+`;
+
+exports[`sport name should match the snapshot 1`] = `"<a id=\\"lnk_Sport\\" href=\\"https://www.rankone.com/Schedules/View_Schedule_All_Web.aspx?P=0&amp;D=85186918-5A19-4676-A654-3F3AC054DD77&amp;S=2348&amp;Sp=7&amp;Mt=0\\" style=\\"color:white !important;\\">Basketball</a>"`;
+
+exports[`table header should match the snapshot 1`] = `
+"<th class=\\"row VSContentHeader NonMasterSubTitle\\" style=\\"background-color: #36454f\\">
+                                                <div id=\\"rpt_Games_th_dateBlock\\" class=\\"col-xs-2\\">
+                                                    <div id=\\"rpt_Games_th_dayComponent\\" class=\\"col-md-6 noPadding\\">Date</div>
+                                                    <div id=\\"rpt_Games_th_timeComponent\\" class=\\"col-md-6 noPadding\\"></div>
+                                                </div>
+                                                <div id=\\"rpt_Games_th_LocationAbbrev\\" class=\\"col-xs-1 noPadding\\" style=\\"width: 30px;\\"></div>
+                                                <div id=\\"rpt_Games_th_OppTeamName\\" class=\\"col-xs-2 noPadding minWidth1\\">Opponent</div>
+                                                
+                                                
+                                                <div id=\\"rpt_Games_th_VenueBlock\\" class=\\"col-xs-3 noPadding minWidth1\\">
+                                                    <span class=\\"printHide\\">
+                                                        <div id=\\"rpt_Games_th_SpecialNotes\\" class=\\"col-md-4 noPadding\\">Special Notes</div>
+                                                        <div id=\\"rpt_Games_th_Venue\\" class=\\"col-md-7 noPadding\\" style=\\"text-align: center;\\">Venue</div>
+                                                    </span>
+                                                    <span class=\\"printShow\\">SpecialNotes/Venue</span>
+                                                </div>
+                                                
+                                                <div id=\\"rpt_Games_th_Score\\" class=\\"col-xs-1 noPadding\\" style=\\"margin-left: 45px;\\">
+                                                    <div id=\\"rpt_Games_thScore\\" class=\\"col-md-5 noPadding\\" style=\\"height: 10px;\\">Results</div>
+                                                </div>
+                                                <div id=\\"rpt_Games_thSummary\\" class=\\"col-xs-1 noPadding\\"></div>
+                                                
+                                                <div class=\\"col-xs-1 noPadding\\">
+
+                                                </div>
+                                            </th>"
+`;

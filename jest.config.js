@@ -1,20 +1,10 @@
+/** @type {import('ts-jest/dist/types').InitialOptionsTsJest} */
+const ts_preset = require('ts-jest/jest-preset')
+const puppeteer_preset = require('jest-puppeteer/jest-preset')
+
 module.exports = {
-    testEnvironment: 'node',
-    transform: {
-      "^.+\\.tsx?$": "ts-jest"
-    },
-    moduleFileExtensions: [
-      "ts",
-      "tsx",
-      "js",
-      "jsx",
-      "json",
-      "node",
-    ],
-    testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.(ts|js)x?$',
-    coverageDirectory: 'coverage',
-    collectCoverageFrom: [
-      'src/**/*.{ts,tsx,js,jsx}',
-      '!src/**/*.d.ts',
-    ],
-  };
+  ...puppeteer_preset,
+  ...ts_preset,
+  testTimeout: 900000,
+  testPathIgnorePatterns: ["<rootDir>(\/.*\/)*lib\.(ts|js)"]
+}

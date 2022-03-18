@@ -1,47 +1,41 @@
 {
   "name": "r1scraper",
   "version": "0.1.0",
-  "description": "",
-  "engines": {
-    "node": ">= 16.13 <17"
+  "description": "a web scraper for Rank One Sport",
+  "author": "Midtown Rulers",
+  "license": "GPL-3.0-or-later",
+  "types": "src/scraper.d.ts",
+  "main": "dist/index.js",
+  "scripts": {
+    "start": "node build/src/index.js",
+    "prebuild": "npm run lint",
+    "build": "node esbuild.config.js",
+    "build:watch": "node watch.esbuild.config.js",
+    "lint": "eslint . --ext .ts,.tsx",
+    "test": "jest"
   },
   "devDependencies": {
-    "@types/jest": "~27.0.2",
+    "@types/jest": "^27.4.1",
     "@types/node": "~16.11.6",
     "@typescript-eslint/eslint-plugin": "~5.7.0",
     "@typescript-eslint/parser": "~5.7.0",
     "concurrently": "^7.0.0",
+    "esbuild": "^0.14.25",
+    "esbuild-copy-static-files": "^0.1.0",
     "eslint": "~8.4.1",
-    "eslint-config-prettier": "~8.3.0",
-    "eslint-plugin-jest": "~25.3.0",
-    "jest": "~27.4.4",
+    "jest": "^27.5.1",
+    "jest-puppeteer": "^6.1.0",
     "nodemon": "^2.0.15",
-    "prettier": "~2.5.1",
-    "rimraf": "~3.0.2",
-    "ts-jest": "~27.1.1",
+    "ts-jest": "^27.1.3",
     "tsutils": "~3.21.0",
     "typescript": "~4.5.3"
   },
-  "scripts": {
-    "start": "node build/src/index.js",
-    "clean": "rimraf coverage build tmp",
-    "prebuild": "npm run lint",
-    "build": "tsc -p tsconfig.release.json",
-    "build:watch": "tsc -w -p tsconfig.release.json",
-    "lint": "eslint . --ext .ts,.tsx",
-    "test": "jest --coverage",
-    "test:watch": "jest --watch",
-    "dev": "concurrently \"nodemon build/src/index.js\" \"npm run build:watch\""
-  },
-  "author": "Midtown Rulers",
-  "license": "GPL-3.0-or-later",
   "dependencies": {
-    "axios": "^0.26.0",
+    "bluebird": "^3.7.2",
+    "got": "^12.0.1",
+    "merge": "^2.1.1",
     "node-html-parser": "^5.2.0",
     "puppeteer": "^13.5.0",
     "tslib": "~2.3.1"
-  },
-  "volta": {
-    "node": "16.13.0"
   }
 }

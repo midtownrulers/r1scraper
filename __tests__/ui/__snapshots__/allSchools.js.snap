@@ -1,0 +1,245 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`district name should match the snapshot 1`] = `"<span id=\\"lbl_DistrictName\\" class=\\"lblStyle_District\\">Austin ISD</span>"`;
+
+exports[`the schools table should match the snapshot 1`] = `
+"<div id=\\"content\\" style=\\"border:none;font-family:Arial, Helvetica, sans-serif;padding-top:20px;\\">
+        <div id=\\"div_Error\\" style=\\"text-align: center; font-size:15px; display:none;\\">
+            <span id=\\"lbl_Error\\" style=\\"color:Red;\\"></span>
+        </div>
+        <div id=\\"schoolCont\\" class=\\"flex fxd-col\\" style=\\"position:relative;\\">
+            <div class=\\"flex fxd-row\\" style=\\"width:100%\\">
+                <div id=\\"highCont\\" class=\\"flex fxd-col wid50per pad10\\" style=\\"\\">
+                    <div id=\\"dvSubTitle1\\" class=\\"scheduleSubTitle NonMasterSubTitle\\" style=\\"color: white; text-align: center;\\">
+                        <span id=\\"lbl_Sub_Title1\\"><b>HIGH SCHOOLS</b></span>
+                    </div>
+                    
+                            <table width=\\"100%\\" class=\\"VSTable\\" id=\\"highTable\\">  
+                                <tbody>
+                                    
+                            <tr>
+                                <td align=\\"left\\" width=\\"100%\\">
+                                    <a id=\\"rpt_Sub_lnk_Link_0\\" href=\\"https://www.rankone.com/Schedules/View_Schedule_All_Web.aspx?P=0&amp;D=85186918-5A19-4676-A654-3F3AC054DD77&amp;S=2328&amp;Mt=0\\">Akins High School</a>
+                                </td>
+                            </tr>                                                       
+                        
+                            <tr>
+                                <td align=\\"left\\" width=\\"100%\\">
+                                    <a id=\\"rpt_Sub_lnk_Link_1\\" href=\\"https://www.rankone.com/Schedules/View_Schedule_All_Web.aspx?P=0&amp;D=85186918-5A19-4676-A654-3F3AC054DD77&amp;S=2329&amp;Mt=0\\">Anderson High School</a>
+                                </td>
+                            </tr>                                                       
+                        
+                            <tr>
+                                <td align=\\"left\\" width=\\"100%\\">
+                                    <a id=\\"rpt_Sub_lnk_Link_2\\" href=\\"https://www.rankone.com/Schedules/View_Schedule_All_Web.aspx?P=0&amp;D=85186918-5A19-4676-A654-3F3AC054DD77&amp;S=2330&amp;Mt=0\\">Ann Richards HS </a>
+                                </td>
+                            </tr>                                                       
+                        
+                            <tr>
+                                <td align=\\"left\\" width=\\"100%\\">
+                                    <a id=\\"rpt_Sub_lnk_Link_3\\" href=\\"https://www.rankone.com/Schedules/View_Schedule_All_Web.aspx?P=0&amp;D=85186918-5A19-4676-A654-3F3AC054DD77&amp;S=2331&amp;Mt=0\\">Austin High School</a>
+                                </td>
+                            </tr>                                                       
+                        
+                            <tr>
+                                <td align=\\"left\\" width=\\"100%\\">
+                                    <a id=\\"rpt_Sub_lnk_Link_4\\" href=\\"https://www.rankone.com/Schedules/View_Schedule_All_Web.aspx?P=0&amp;D=85186918-5A19-4676-A654-3F3AC054DD77&amp;S=2332&amp;Mt=0\\">Bowie High School</a>
+                                </td>
+                            </tr>                                                       
+                        
+                            <tr>
+                                <td align=\\"left\\" width=\\"100%\\">
+                                    <a id=\\"rpt_Sub_lnk_Link_5\\" href=\\"https://www.rankone.com/Schedules/View_Schedule_All_Web.aspx?P=0&amp;D=85186918-5A19-4676-A654-3F3AC054DD77&amp;S=2333&amp;Mt=0\\">Crockett High School</a>
+                                </td>
+                            </tr>                                                       
+                        
+                            <tr>
+                                <td align=\\"left\\" width=\\"100%\\">
+                                    <a id=\\"rpt_Sub_lnk_Link_6\\" href=\\"https://www.rankone.com/Schedules/View_Schedule_All_Web.aspx?P=0&amp;D=85186918-5A19-4676-A654-3F3AC054DD77&amp;S=2334&amp;Mt=0\\">Eastside Memorial High School</a>
+                                </td>
+                            </tr>                                                       
+                        
+                            <tr>
+                                <td align=\\"left\\" width=\\"100%\\">
+                                    <a id=\\"rpt_Sub_lnk_Link_7\\" href=\\"https://www.rankone.com/Schedules/View_Schedule_All_Web.aspx?P=0&amp;D=85186918-5A19-4676-A654-3F3AC054DD77&amp;S=2337&amp;Mt=0\\">LBJ High School</a>
+                                </td>
+                            </tr>                                                       
+                        
+                            <tr>
+                                <td align=\\"left\\" width=\\"100%\\">
+                                    <a id=\\"rpt_Sub_lnk_Link_8\\" href=\\"https://www.rankone.com/Schedules/View_Schedule_All_Web.aspx?P=0&amp;D=85186918-5A19-4676-A654-3F3AC054DD77&amp;S=2338&amp;Mt=0\\">Liberal Arts and Science Academy </a>
+                                </td>
+                            </tr>                                                       
+                        
+                            <tr>
+                                <td align=\\"left\\" width=\\"100%\\">
+                                    <a id=\\"rpt_Sub_lnk_Link_9\\" href=\\"https://www.rankone.com/Schedules/View_Schedule_All_Web.aspx?P=0&amp;D=85186918-5A19-4676-A654-3F3AC054DD77&amp;S=2339&amp;Mt=0\\">McCallum High School</a>
+                                </td>
+                            </tr>                                                       
+                        
+                            <tr>
+                                <td align=\\"left\\" width=\\"100%\\">
+                                    <a id=\\"rpt_Sub_lnk_Link_10\\" href=\\"https://www.rankone.com/Schedules/View_Schedule_All_Web.aspx?P=0&amp;D=85186918-5A19-4676-A654-3F3AC054DD77&amp;S=2336&amp;Mt=0\\">Navarro High School</a>
+                                </td>
+                            </tr>                                                       
+                        
+                            <tr>
+                                <td align=\\"left\\" width=\\"100%\\">
+                                    <a id=\\"rpt_Sub_lnk_Link_11\\" href=\\"https://www.rankone.com/Schedules/View_Schedule_All_Web.aspx?P=0&amp;D=85186918-5A19-4676-A654-3F3AC054DD77&amp;S=2340&amp;Mt=0\\">Northeast High School</a>
+                                </td>
+                            </tr>                                                       
+                        
+                            <tr>
+                                <td align=\\"left\\" width=\\"100%\\">
+                                    <a id=\\"rpt_Sub_lnk_Link_12\\" href=\\"https://www.rankone.com/Schedules/View_Schedule_All_Web.aspx?P=0&amp;D=85186918-5A19-4676-A654-3F3AC054DD77&amp;S=2341&amp;Mt=0\\">Travis High School</a>
+                                </td>
+                            </tr>                                                       
+                        
+                                </tbody>                                                  
+                            </table>
+                        
+                </div>           
+                <div id=\\"middleCont\\" class=\\"flex fxd-col wid50per pad10\\" style=\\"\\">
+                    <div id=\\"dvSubTitle2\\" class=\\"scheduleSubTitle NonMasterSubTitle\\" style=\\"color: white; text-align: center;\\">
+                        <span id=\\"lbl_Sub_Title2\\"><b>MIDDLE SCHOOLS / JUNIOR HIGHS</b></span>
+                    </div>                
+                    
+                            <table width=\\"100%\\" class=\\"VSTable\\" id=\\"middleTable\\">                    
+                                
+                            <tbody><tr>
+                                <td align=\\"left\\" width=\\"100%\\">
+                                    <a id=\\"rpt_Sub2_lnk_Link2_0\\" href=\\"https://www.rankone.com/Schedules/View_Schedule_All_Web.aspx?P=0&amp;D=85186918-5A19-4676-A654-3F3AC054DD77&amp;S=2342&amp;Mt=0\\">Ann Richards School for Young Women Leaders </a>
+                                </td>
+                            </tr>                                                            
+                        
+                            <tr>
+                                <td align=\\"left\\" width=\\"100%\\">
+                                    <a id=\\"rpt_Sub2_lnk_Link2_1\\" href=\\"https://www.rankone.com/Schedules/View_Schedule_All_Web.aspx?P=0&amp;D=85186918-5A19-4676-A654-3F3AC054DD77&amp;S=2343&amp;Mt=0\\">Bailey Middle School</a>
+                                </td>
+                            </tr>                                                            
+                        
+                            <tr>
+                                <td align=\\"left\\" width=\\"100%\\">
+                                    <a id=\\"rpt_Sub2_lnk_Link2_2\\" href=\\"https://www.rankone.com/Schedules/View_Schedule_All_Web.aspx?P=0&amp;D=85186918-5A19-4676-A654-3F3AC054DD77&amp;S=2344&amp;Mt=0\\">Bedichek Middle School</a>
+                                </td>
+                            </tr>                                                            
+                        
+                            <tr>
+                                <td align=\\"left\\" width=\\"100%\\">
+                                    <a id=\\"rpt_Sub2_lnk_Link2_3\\" href=\\"https://www.rankone.com/Schedules/View_Schedule_All_Web.aspx?P=0&amp;D=85186918-5A19-4676-A654-3F3AC054DD77&amp;S=2345&amp;Mt=0\\">Burnet Middle School</a>
+                                </td>
+                            </tr>                                                            
+                        
+                            <tr>
+                                <td align=\\"left\\" width=\\"100%\\">
+                                    <a id=\\"rpt_Sub2_lnk_Link2_4\\" href=\\"https://www.rankone.com/Schedules/View_Schedule_All_Web.aspx?P=0&amp;D=85186918-5A19-4676-A654-3F3AC054DD77&amp;S=2346&amp;Mt=0\\">Covington Middle School</a>
+                                </td>
+                            </tr>                                                            
+                        
+                            <tr>
+                                <td align=\\"left\\" width=\\"100%\\">
+                                    <a id=\\"rpt_Sub2_lnk_Link2_5\\" href=\\"https://www.rankone.com/Schedules/View_Schedule_All_Web.aspx?P=0&amp;D=85186918-5A19-4676-A654-3F3AC054DD77&amp;S=2347&amp;Mt=0\\">Dobie Middle School</a>
+                                </td>
+                            </tr>                                                            
+                        
+                            <tr>
+                                <td align=\\"left\\" width=\\"100%\\">
+                                    <a id=\\"rpt_Sub2_lnk_Link2_6\\" href=\\"https://www.rankone.com/Schedules/View_Schedule_All_Web.aspx?P=0&amp;D=85186918-5A19-4676-A654-3F3AC054DD77&amp;S=2349&amp;Mt=0\\">Garcia YMLA Middle School</a>
+                                </td>
+                            </tr>                                                            
+                        
+                            <tr>
+                                <td align=\\"left\\" width=\\"100%\\">
+                                    <a id=\\"rpt_Sub2_lnk_Link2_7\\" href=\\"https://www.rankone.com/Schedules/View_Schedule_All_Web.aspx?P=0&amp;D=85186918-5A19-4676-A654-3F3AC054DD77&amp;S=2350&amp;Mt=0\\">Gorzycki Middle School</a>
+                                </td>
+                            </tr>                                                            
+                        
+                            <tr>
+                                <td align=\\"left\\" width=\\"100%\\">
+                                    <a id=\\"rpt_Sub2_lnk_Link2_8\\" href=\\"https://www.rankone.com/Schedules/View_Schedule_All_Web.aspx?P=0&amp;D=85186918-5A19-4676-A654-3F3AC054DD77&amp;S=2351&amp;Mt=0\\">Kealing Middle School</a>
+                                </td>
+                            </tr>                                                            
+                        
+                            <tr>
+                                <td align=\\"left\\" width=\\"100%\\">
+                                    <a id=\\"rpt_Sub2_lnk_Link2_9\\" href=\\"https://www.rankone.com/Schedules/View_Schedule_All_Web.aspx?P=0&amp;D=85186918-5A19-4676-A654-3F3AC054DD77&amp;S=2352&amp;Mt=0\\">Lamar Middle School</a>
+                                </td>
+                            </tr>                                                            
+                        
+                            <tr>
+                                <td align=\\"left\\" width=\\"100%\\">
+                                    <a id=\\"rpt_Sub2_lnk_Link2_10\\" href=\\"https://www.rankone.com/Schedules/View_Schedule_All_Web.aspx?P=0&amp;D=85186918-5A19-4676-A654-3F3AC054DD77&amp;S=2348&amp;Mt=0\\">Lively Middle School</a>
+                                </td>
+                            </tr>                                                            
+                        
+                            <tr>
+                                <td align=\\"left\\" width=\\"100%\\">
+                                    <a id=\\"rpt_Sub2_lnk_Link2_11\\" href=\\"https://www.rankone.com/Schedules/View_Schedule_All_Web.aspx?P=0&amp;D=85186918-5A19-4676-A654-3F3AC054DD77&amp;S=2353&amp;Mt=0\\">Martin Middle School</a>
+                                </td>
+                            </tr>                                                            
+                        
+                            <tr>
+                                <td align=\\"left\\" width=\\"100%\\">
+                                    <a id=\\"rpt_Sub2_lnk_Link2_12\\" href=\\"https://www.rankone.com/Schedules/View_Schedule_All_Web.aspx?P=0&amp;D=85186918-5A19-4676-A654-3F3AC054DD77&amp;S=2354&amp;Mt=0\\">Mendez Middle School</a>
+                                </td>
+                            </tr>                                                            
+                        
+                            <tr>
+                                <td align=\\"left\\" width=\\"100%\\">
+                                    <a id=\\"rpt_Sub2_lnk_Link2_13\\" href=\\"https://www.rankone.com/Schedules/View_Schedule_All_Web.aspx?P=0&amp;D=85186918-5A19-4676-A654-3F3AC054DD77&amp;S=2355&amp;Mt=0\\">Murchison Middle School</a>
+                                </td>
+                            </tr>                                                            
+                        
+                            <tr>
+                                <td align=\\"left\\" width=\\"100%\\">
+                                    <a id=\\"rpt_Sub2_lnk_Link2_14\\" href=\\"https://www.rankone.com/Schedules/View_Schedule_All_Web.aspx?P=0&amp;D=85186918-5A19-4676-A654-3F3AC054DD77&amp;S=2356&amp;Mt=0\\">O. Henry Middle School</a>
+                                </td>
+                            </tr>                                                            
+                        
+                            <tr>
+                                <td align=\\"left\\" width=\\"100%\\">
+                                    <a id=\\"rpt_Sub2_lnk_Link2_15\\" href=\\"https://www.rankone.com/Schedules/View_Schedule_All_Web.aspx?P=0&amp;D=85186918-5A19-4676-A654-3F3AC054DD77&amp;S=2357&amp;Mt=0\\">Paredes Middle School</a>
+                                </td>
+                            </tr>                                                            
+                        
+                            <tr>
+                                <td align=\\"left\\" width=\\"100%\\">
+                                    <a id=\\"rpt_Sub2_lnk_Link2_16\\" href=\\"https://www.rankone.com/Schedules/View_Schedule_All_Web.aspx?P=0&amp;D=85186918-5A19-4676-A654-3F3AC054DD77&amp;S=2358&amp;Mt=0\\">Sadler Means YWLA Middle School</a>
+                                </td>
+                            </tr>                                                            
+                        
+                            <tr>
+                                <td align=\\"left\\" width=\\"100%\\">
+                                    <a id=\\"rpt_Sub2_lnk_Link2_17\\" href=\\"https://www.rankone.com/Schedules/View_Schedule_All_Web.aspx?P=0&amp;D=85186918-5A19-4676-A654-3F3AC054DD77&amp;S=2359&amp;Mt=0\\">Small Middle School</a>
+                                </td>
+                            </tr>                                                            
+                        
+                            <tr>
+                                <td align=\\"left\\" width=\\"100%\\">
+                                    <a id=\\"rpt_Sub2_lnk_Link2_18\\" href=\\"https://www.rankone.com/Schedules/View_Schedule_All_Web.aspx?P=0&amp;D=85186918-5A19-4676-A654-3F3AC054DD77&amp;S=2360&amp;Mt=0\\">Webb Middle School</a>
+                                </td>
+                            </tr>                                                            
+                        
+                            </tbody></table>
+                        
+                </div>
+                <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                
+            </div>
+            <div id=\\"lblApp\\" class=\\"flex fxd-col fx-justcenter fx-aligncenter pad15\\" style=\\"text-align: center\\">
+                <div id=\\"dvApp\\" class=\\"pad15\\" style=\\"text-align: center\\">
+                    Download the Rank One app for a mobile optimized experience!
+                </div>
+                <div class=\\"flex fxd-row\\" style=\\"\\">
+                    <a href=\\"https://apps.apple.com/us/app/rank-one/id1579070294\\" target=\\"_blank\\">
+                        <img id=\\"Image1\\" src=\\"../images/btn-app-store.png\\" style=\\"background-color: Black; height: 50px;\\">
+                    </a>
+                    &nbsp; &nbsp; &nbsp;
+                    <a href=\\"https://play.google.com/store/apps/details?id=com.rankone.r1&amp;hl=en\\" target=\\"_blank\\">
+                        <img id=\\"Image2\\" src=\\"../images/btn-google-play.png\\" style=\\"background-color: Black; height: 50px;\\">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>"
+`;
