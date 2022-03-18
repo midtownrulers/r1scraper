@@ -4,13 +4,15 @@
   "description": "a web scraper for Rank One Sport",
   "author": "Midtown Rulers",
   "license": "GPL-3.0-or-later",
-  "types": "src/scraper.d.ts",
+  "types": "src/index.d.ts",
   "main": "dist/index.js",
   "scripts": {
     "start": "node build/src/index.js",
     "prebuild": "npm run lint",
     "build": "node esbuild.config.js",
     "build:watch": "node watch.esbuild.config.js",
+    "build:types": "tsc --outDir src --emitDeclarationOnly --declaration --project tsconfig.json",
+    "postbuild": "npm run build:types",
     "lint": "eslint . --ext .ts,.tsx",
     "test": "jest"
   },

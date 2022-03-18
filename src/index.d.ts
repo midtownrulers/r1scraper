@@ -1,0 +1,15 @@
+import { GetDistrict, GetGame, GetGames, GetPlayer, GetPlayers, GetSchool, GetSchools, GetTeam, CreateTeamMap, GetTeams, School, SchoolType, Sport, GetStandings } from "./scraper";
+export declare const getDistrict: GetDistrict;
+export declare const getSchools: GetSchools;
+export declare const getSchoolIds: (districtId: string, schoolType?: SchoolType) => Promise<string[]>;
+export declare const getSchoolWithType: (districtId: string, schoolId: string, schoolType: SchoolType) => Promise<School>;
+export declare const getSchool: GetSchool;
+export declare const getSport: (districtId: string, schoolId: string, id: string) => Promise<Sport>;
+export declare const getTeam: GetTeam;
+export declare const getTeams: GetTeams;
+export declare const getPlayer: GetPlayer;
+export declare const getPlayers: GetPlayers;
+export declare const createTeamMap: CreateTeamMap;
+export declare const getGame: GetGame;
+export declare const getGames: GetGames;
+export declare const getStandings: GetStandings;
